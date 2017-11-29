@@ -116,7 +116,7 @@ if($send_id == $me){
   <button class="btn btn-primary" style="width:150px; ">Send</button>
 </div>
 </form>
-<button onclick="logoutMe()" >Logout</button>
+<button class="btn btn-danger" style="width:100px; float:right;" onclick="logoutMe()" >Logout</button>
 <script>
 function logoutMe(){
   window.location="index.php?action=logout";
