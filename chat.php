@@ -1,6 +1,9 @@
 
 <?php 
 session_start();
+if(!isset($_SESSION['user1'])){
+  header('location:index.php');
+}
 if(!isset($_GET['id'])){
 	header('location:profile.php');
 }
@@ -31,6 +34,7 @@ $yourname = $_GET['name'];
 }
 .xb{
   color: red;
+  background-color:#e6e6b9;
 }
 </style>
 
@@ -45,11 +49,11 @@ window.onload=function () {
 </script>
 
 </head>
-
-<div class="container" style="overflow:auto;">
+<body style="background-image:url('images/background1.jpg')">
+<div class="container" style="overflow:auto;" >
 </br>
 </br>
-<div id="message-box" style="width:100%; border:2px solid red; height:300px;overflow-y:scroll; padding:10px; ">
+<div id="message-box" style="width:100%; border:2px solid red; height:300px;overflow-y:scroll; padding:10px; background-color:white;">
 <?php
 include('db.php');
 if(!$con){
@@ -83,7 +87,7 @@ if($send_id == $me){
      //  $class = "xb";
      // }
         
-       echo "<table>";
+       echo "<table class='$class' style='width:100%'>";
        echo "<tr>";
         echo "<td>" ;
                 echo "<td class='$class'>" ;
@@ -106,30 +110,18 @@ if($send_id == $me){
 	<input type="hidden" name="reciever" value="<?php echo $you ?> ">
 	<input type="hidden" name="sender_name" value="<?php echo $myname ?>">
 	<input type="hidden" name="rec_name" value="<?php echo $yourname ?>">
-  <label for="comment">Message:</label>
-  <textarea class="form-control" rows="5" id="message" name="message" placeholder="poked you"> </textarea>
+  <label for="comment" ><h1>Message: </h1></label>
+  <textarea class="form-control" rows="5" id="message" name="message" placeholder="First name"> </textarea>
 </br>
   <button class="btn btn-primary" style="width:150px; ">Send</button>
 </div>
 </form>
-
+<button onclick="logoutMe()" >Logout</button>
+<script>
+function logoutMe(){
+  window.location="index.php?action=logout";
+}
+</script>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
 </html>

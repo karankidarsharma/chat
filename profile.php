@@ -12,6 +12,10 @@
 
 <?php  
 session_start();
+
+if(!isset($_SESSION['user1'])){
+	header('location:index.php');
+}
 $me_user = $_SESSION['user1'];
 include('db.php');
 if(!$con){

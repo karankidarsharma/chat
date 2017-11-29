@@ -1,4 +1,9 @@
 <?php 
+
+session_start();
+if(!isset($_SESSION['user1'])){
+	header('location:index.php');
+}
 $reciever = $_REQUEST['reciever'];
 $sender  = $_REQUEST['sender'];
 $message = $_REQUEST['message'];
